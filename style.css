@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", serif;
+}
+
+.dis-none{
+        display: none !important;
+    }
+@media screen and (min-width: 1280px) {
+header{
+    background-color: #F5F5F6;
+    font-weight: 500;
+    padding-top: 2.2vh;
+    padding-bottom: 1vh;
+    padding-left: 8.5vw;
+    padding-right: 2vw;
+}
+.header-container{
+    display: flex;
+    justify-content: space-between;
+}
+.menu-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 2vw;
+    font-size: 1.2vw;
+    padding-top: 7px;
+    color: #959BA4;
+    letter-spacing: 1px;
+}
+.menu-container :first-child{
+    color: black;
+}
+.logo-container img{
+    width: 7vw;
+    padding-top: 5px;
+}
+.login{
+    /* margin-left: 8vw; */
+    padding: 10px;
+    border-radius: 7px;
+    background-color: white;
+    width: 75px;
+}
+h1{
+    font-size: 45.8px;
+}
+button{
+    border: none;
+    background-color: white;
+    color: #959BA4;
+    font-size: 15px;
+    border-right: 1px solid #E5E5E5;
+}
+.button-one :first-child, .button-two :first-child{
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.button-one :last-child, .button-two :last-child{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.choice{
+    background-color: #833AE0;
+    color: white;
+}
+.button-one , .button-two{
+    width: 320px;
+    height: 38px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border: 1px solid #E5E5E5;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+main{
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.main-container{
+    margin-left: 7vw;
+    width: 800px;
+}
+.text-one , .text-two{
+    font-size: 14px;
+    display: inline;
+}
+.input-header{
+    margin-top: 35px;
+    color: #9F9F9F;
+}
+.buttons{
+    margin-top: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.inputs{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.input-one, .input-two{
+    width: 320px;
+    height: 120px;
+    border: 1px solid #E5E5E5;
+}
+input{
+    margin-top: 15px;
+    font-weight: 600;
+    width: 300px;
+    margin-left: 14px;
+    height: 40px;
+    border: none;
+    font-size: 36px;
+}
+input:focus{
+    outline: none;
+}
+.inputs p{
+    color: #E5E5E5;
+    font-size: 12px;
+    margin-top: 30px;
+    margin-left: 16px;
+}
+.three-line{
+    display: none;
+}
+.internet{
+    background-color: hsla(0, 85%, 69%, 0.5);
+    width: 14vw;
+    padding: 10px 0 10px 25px;
+    font-size: 1.2vw;
+    display: flex;
+    margin-top: 25px;
+    gap: 10px;
+}
+.internet img{
+    width: 1.5vw;
+}
+}
+
+@media screen and (min-width: 992px) and (max-width: 1280px) {
+    header{
+        background-color: #F5F5F6;
+        font-weight: 500;
+        padding-top: 2.2vh;
+        padding-bottom: 1vh;
+        padding-left: 8.5vw;
+        padding-right: 2vw;
+    }
+    .header-container{
+        display: flex;
+        justify-content: space-between;
+    }
+    .menu-container{
+        display: flex;
+        justify-content: space-between;
+        gap: 2vw;
+        font-size: 1.2vw;
+        padding-top: 11px;
+        color: #959BA4;
+        letter-spacing: 1px;
+    }
+    .menu-container :first-child{
+        color: black;
+    }
+    .logo-container img{
+        width: 7vw;
+        padding-top: 10px;
+    }
+    .login{
+        padding: 10px;
+        border-radius: 7px;
+        background-color: white;
+        width: 75px;
+    }
+    h1{
+        font-size: 4vw;
+    }
+    button{
+        border: none;
+        background-color: white;
+        color: #959BA4;
+        font-size: 15px;
+        border-right: 1px solid #E5E5E5;
+    }
+    .button-one :first-child, .button-two :first-child{
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+    .button-one :last-child, .button-two :last-child{
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+    .choice{
+        background-color: #833AE0;
+        color: white;
+    }
+    .button-one , .button-two{
+        width: 25vw;
+        height: 38px;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        border: 1px solid #E5E5E5;
+        border-radius: 3px;
+        margin-top: 10px;
+    }
+    main{
+        margin-top: 70px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .main-container{
+        margin-left: 9vw;
+        width: 64vw;
+    }
+    .text-one , .text-two{
+        font-size: 14px;
+        display: inline;
+    }
+    .input-header{
+        margin-top: 35px;
+        color: #9F9F9F;
+    }
+    .buttons{
+        margin-top: 7px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .inputs{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .input-one, .input-two{
+        width: 25vw;
+        height: 120px;
+        border: 1px solid #E5E5E5;
+    }
+    input{
+        margin-top: 15px;
+        font-weight: 600;
+        width: 22.5vw;
+        margin-left: 14px;
+        height: 40px;
+        border: none;
+        font-size: 36px;
+    }
+    input:focus{
+        outline: none;
+    }
+    .inputs p{
+        color: #E5E5E5;
+        font-size: 12px;
+        margin-top: 30px;
+        margin-left: 16px;
+    }
+    .three-line{
+        display: none;
+    }
+    .internet{
+        background-color: hsla(0, 85%, 69%, 0.5);
+        width: 17vw;
+        padding: 10px 0 10px 25px;
+        font-size: 1.4vw;
+        display: flex;
+        margin-top: 25px;
+        gap: 10px;
+    }
+    .internet img{
+        width: 1.8vw;
+    }
+    
+}
+@media screen and (min-width: 320px) and (max-width: 991px) {
+    
+    header{
+        background-color: #F5F5F6;
+        font-weight: 500;
+        padding-top: 2.2vh;
+        padding-bottom: 1vh;
+        padding-left: 8.5vw;
+        padding-right: 2vw;
+    }
+    .header-container{
+        display: flex;
+        justify-content: space-between;
+    }
+    .login-and-menu{
+        display: flex;
+        gap: 25px;
+    }
+    .menu-container{
+        display: none;
+    }
+    .three-line{
+        margin-top: 9px;
+    }
+    .menu-container :first-child{
+        color: black;
+    }
+    .logo-container img{
+        width: 100px;
+        padding-top: 5px;
+    }
+    .login{
+        padding: 9px 9px;
+        border-radius: 7px;
+        background-color: white;
+        width: 60px;
+        font-size: 13px;
+    }
+    h1{
+        font-size: 5vw;
+    }
+    button{
+        border: none;
+        background-color: white;
+        color: #959BA4;
+        font-size: 15px;
+        border-right: 1px solid #E5E5E5;
+    }
+    .button-one :first-child, .button-two :first-child{
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+    .button-one :last-child, .button-two :last-child{
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+    .choice{
+        background-color: #833AE0;
+        color: white;
+    }
+    .button-one , .button-two{
+        width: 310px;
+        height: 38px;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        border: 1px solid #E5E5E5;
+        border-radius: 3px;
+        margin-top: 10px;
+    }
+    main{
+        margin-top: 70px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .main-container{
+        margin-bottom: 50px;
+    }
+    .text-one , .text-two{
+        font-size: 14px;
+        display: inline;
+    }
+    .input-header{
+        margin-top: 35px;
+        color: #9F9F9F;
+    }
+    .buttons{
+        margin-top: 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .inputs{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .input-one, .input-two{
+        width: 310px;
+        height: 150px;
+        border: 1px solid #E5E5E5;
+    }
+    input{
+        margin-top: 15px;
+        font-weight: 600;
+        width: 294px;
+        margin-left: 14px;
+        height: 40px;
+        border: none;
+        font-size: 36px;
+    }
+    input:focus{
+        outline: none;
+    }
+    .inputs p{
+        color: #E5E5E5;
+        font-size: 12px;
+        margin-top: 60px;
+        margin-left: 16px;
+    }
+    .internet{
+        background-color: hsla(0, 85%, 69%, 0.5);
+        width: 40vw;
+        padding: 10px 0 10px 4vw;
+        font-size: 3.5vw;
+        display: flex;
+        margin-top: 25px;
+        gap: 10px;
+    }
+    .internet img{
+        width: 4.5vw;
+    }
+}
