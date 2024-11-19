@@ -53,17 +53,12 @@ firstInp.addEventListener('input', () => {
                     item[1] = item[1].substring(0, 5);
                 }
                 secondInp.value = item.join('.');
+                
             }
-            if (firstInp.value.length > 23) {
-                let item = firstInp.value.split('');
-                for (let i = 23; i < firstInp.value.length; i++) {
-                    item[i] = "";
-                }
-                firstInp.value = item.join('');
-            }
-        })
         main=1;
 })
+})
+
 secondInp.addEventListener('input', () => {
     fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${second}/${first}`).then(res => res.json())
         .then(data => {
@@ -75,24 +70,64 @@ secondInp.addEventListener('input', () => {
                 }
                 firstInp.value = item.join('.');
             }
-            if (secondInp.value.length > 23) {
-                let item = secondInp.value.split('');
-                for (let i = 23; i < secondInp.value.length; i++) {
-                    item[i] = "";
-                }
-                secondInp.value = item.join('');
-            }
+            main=2;
         })
-        main=2;
 })
 
 firstInp.addEventListener('input', () => {
     firstInp.value = firstInp.value.replace(/[^0-9.,]/g, '');
     firstInp.value = firstInp.value.replace(",", ".");
-});
+    let item = firstInp.value.split('');
+    let count=0;
+    if (item[0] == '.') {
+        item[0]="";
+    }
+    for (let i = 0; i < item.length ; i++) {
+        if (item[i] === '.') {
+            count++;
+            if (count > 1) {
+                item[i]="";
+            }
+        }
+    }
+    firstInp.value=item.join('');
+
+    if (firstInp.value.includes('.')) {
+        let item = firstInp.value.split('.');
+        if (item[1].length > 5) {
+            item[1] = item[1].substring(0, 5);
+        }
+        firstInp.value = item.join('.');
+        
+    }
+})
+
 secondInp.addEventListener('input', () => {
     secondInp.value = secondInp.value.replace(/[^0-9.,]/g, '');
     secondInp.value = secondInp.value.replace(",", ".");
+    let item = secondInp.value.split('');
+    let count=0;
+    if (item[0] == '.') {
+        item[0]="";
+    }
+    for (let i = 0; i < item.length ; i++) {
+        if (item[i] === '.') {
+            count++;
+            if (count > 1) {
+                item[i]="";
+            }
+        }
+    }
+    secondInp.value=item.join('');
+    
+    if (secondInp.value.includes('.')) {
+        let item = secondInp.value.split('.');
+        if (item[1].length > 5) {
+            item[1] = item[1].substring(0, 5);
+        }
+        secondInp.value = item.join('.');
+        
+    }
 
 });
 
