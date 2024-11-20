@@ -10,68 +10,41 @@ let btns = document.querySelectorAll('.buttons button');
 let internet = document.querySelector('.internet');
 let main;
 
-btns.forEach(item => {
-    item.addEventListener('click', () => {
-        while (!navigator.onLine) {
-            internet.classList.remove('dis-none');
-            break;
-        }
-
-        while (navigator.onLine) {
-            if (internet.classList != "dis-none") {
-                internet.classList.add('dis-none')
+function firstSecondFetch(){
+    if(main==1){
+        fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${first}/${second}`).then(res => res.json()).then(data =>{
+            secondInp.value = (Number(firstInp.value) * data.conversion_rate).toFixed(5);
+            if(secondInp.value <=0){
+                secondInp.value=0;
             }
-            break;
+    })
+}
+else if(main==2){
+    fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${second}/${first}`).then(res => res.json()).then(data =>{
+        firstInp.value = (Number(secondInp.value) * data.conversion_rate).toFixed(5);
+        if(firstInp.value <=0){
+            firstInp.value=0;
         }
     })
-})
-
-btns.forEach(item => {
-    item.addEventListener('touchstart', () => {
-        while (!navigator.onLine) {
-            internet.classList.remove('dis-none');
-            break;
-        }
-
-        while (navigator.onLine) {
-            if (internet.classList != "dis-none") {
-                internet.classList.add('dis-none')
-            }
-            break;
-        }
+}
+}
+function footerText(){
+    fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${first}/${second}`).then(res => res.json()).then(data =>{
+        footerTextOne.textContent="1 "+first+" = "+data.conversion_rate+" "+ second
     })
-})
-
+    fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${second}/${first}`).then(res => res.json()).then(data =>{
+        footerTextTwo.textContent="1 "+second+" = "+data.conversion_rate+" "+ first
+    })
+}
 
 firstInp.addEventListener('input', () => {
-    fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${first}/${second}`).then(res => res.json())
-        .then(data => {
-            secondInp.value = firstInp.value * data.conversion_rate;
-            if (secondInp.value.includes('.')) {
-                let item = secondInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                secondInp.value = item.join('.');
-                
-            }
-        main=1;
-})
+    main=1;
+    firstSecondFetch();
 })
 
 secondInp.addEventListener('input', () => {
-    fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${second}/${first}`).then(res => res.json())
-        .then(data => {
-            firstInp.value = secondInp.value * data.conversion_rate;
-            if (firstInp.value.includes('.')) {
-                let item = firstInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                firstInp.value = item.join('.');
-            }
-            main=2;
-        })
+    main=2;
+    firstSecondFetch();
 })
 
 firstInp.addEventListener('input', () => {
@@ -80,7 +53,7 @@ firstInp.addEventListener('input', () => {
     let item = firstInp.value.split('');
     let count=0;
     if (item[0] == '.') {
-        item[0]="";
+        item[0]="0.";
     }
     for (let i = 0; i < item.length ; i++) {
         if (item[i] === '.') {
@@ -91,15 +64,15 @@ firstInp.addEventListener('input', () => {
         }
     }
     firstInp.value=item.join('');
-
-    if (firstInp.value.includes('.')) {
-        let item = firstInp.value.split('.');
-        if (item[1].length > 5) {
-            item[1] = item[1].substring(0, 5);
+    if(firstInp.value.includes(".")){
+        let items=firstInp.value.split(".");
+        if(items[1].length>5){
+            items[1]=items[1].substring(0, 5);
         }
-        firstInp.value = item.join('.');
-        
+        firstInp.value=items.join('.');
     }
+    firstInp.value = firstInp.value.toFixed(5);
+    
 })
 
 secondInp.addEventListener('input', () => {
@@ -108,7 +81,7 @@ secondInp.addEventListener('input', () => {
     let item = secondInp.value.split('');
     let count=0;
     if (item[0] == '.') {
-        item[0]="";
+        item[0]="0.";
     }
     for (let i = 0; i < item.length ; i++) {
         if (item[i] === '.') {
@@ -119,16 +92,16 @@ secondInp.addEventListener('input', () => {
         }
     }
     secondInp.value=item.join('');
-    
-    if (secondInp.value.includes('.')) {
-        let item = secondInp.value.split('.');
-        if (item[1].length > 5) {
-            item[1] = item[1].substring(0, 5);
+    if(secondInp.value.includes(".")){
+        let items=secondInp.value.split(".");
+        if(items[1].length>5){
+            items[1]=items[1].substring(0, 5);
         }
-        secondInp.value = item.join('.');
-        
+        secondInp.value=items.join('.');
     }
-
+    secondInp.value=secondInp.value.toFixed(5);
+    
+    
 });
 
 function choice(elements, selectedElement) {
@@ -144,223 +117,37 @@ function choice(elements, selectedElement) {
 btnOne.forEach((itemOne, i) =>{
     itemOne.addEventListener('click', () =>{
         choice(btnOne,itemOne);
-                first=itemOne.textContent;
-                fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${first}/${second}`).then(res => res.json())
-                .then(data =>{
-                    footerTextOne.textContent="1 "+first+" = "+data.conversion_rate+" "+ second
-                    if(main==1){
-                        secondInp.value = firstInp.value * data.conversion_rate;
-                        if (secondInp.value.includes('.')) {
-                            let item = secondInp.value.split('.');
-                            if (item[1].length > 5) {
-                                item[1] = item[1].substring(0, 5);
-                            }
-                            secondInp.value = item.join('.');
-                        }
-                    }
-                    else if(main==2){
-                        firstInp.value=secondInp.value* data.conversion_rate;
-                          if (firstInp.value.includes('.')) {
-                let item = firstInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                firstInp.value = item.join('.');
-            }
-                    }    
-                })
-                fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${second}/${first}`).then(res => res.json())
-                .then(data =>{
-                    if(main==1){
-                        secondInp.value = firstInp.value * data.conversion_rate;
-                        if (secondInp.value.includes('.')) {
-                            let item = secondInp.value.split('.');
-                            if (item[1].length > 5) {
-                                item[1] = item[1].substring(0, 5);
-                            }
-                            secondInp.value = item.join('.');
-                        }
-                    }
-                    else if(main==2){
-                        firstInp.value=secondInp.value* data.conversion_rate;
-                          if (firstInp.value.includes('.')) {
-                let item = firstInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                firstInp.value = item.join('.');
-            }
-                    }    
-                    footerTextTwo.textContent="1 "+second+" = "+data.conversion_rate+" "+ first
-                })
+        first=itemOne.textContent;
+        firstSecondFetch();
+        footerText();
     })
 })
-
-
-btnOne.forEach((itemOne, i) =>{
-    itemOne.addEventListener('touchstart', () =>{
-        choice(btnOne,itemOne);
-                first=itemOne.textContent;                  
-                fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${first}/${second}`).then(res => res.json())
-                .then(data =>{
-                    footerTextOne.textContent="1 "+first+" = "+data.conversion_rate+" "+ second
-                    if(main==1){
-                        secondInp.value = firstInp.value * data.conversion_rate;
-                        if (secondInp.value.includes('.')) {
-                let item = secondInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                secondInp.value = item.join('.');
-            }
-                    }
-                    else if(main==2){
-                        firstInp.value=secondInp.value* data.conversion_rate;
-                          if (firstInp.value.includes('.')) {
-                let item = firstInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                firstInp.value = item.join('.');
-            }
-                    }    
-                })
-                fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${second}/${first}`).then(res => res.json())
-                .then(data =>{
-                    if(main==1){
-                        secondInp.value = firstInp.value * data.conversion_rate;
-                        if (secondInp.value.includes('.')) {
-                let item = secondInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                secondInp.value = item.join('.');
-            }
-                    }
-                    else if(main==2){
-                        firstInp.value=secondInp.value* data.conversion_rate;
-                          if (firstInp.value.includes('.')) {
-                let item = firstInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                firstInp.value = item.join('.');
-            }
-                    }    
-                    footerTextTwo.textContent="1 "+second+" = "+data.conversion_rate+" "+ first
-                })
-    })
-})
-
 
 btnTwo.forEach((itemTwo, j) =>{
     itemTwo.addEventListener('click', () =>{
         second=itemTwo.textContent
         choice(btnTwo,itemTwo);                
-        fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${first}/${second}`).then(res => res.json())
-        .then(data =>{
-            if(main==1){
-                secondInp.value = firstInp.value * data.conversion_rate;
-                if (secondInp.value.includes('.')) {
-                let item = secondInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                secondInp.value = item.join('.');
-            }
-            }
-            else if(main==2){
-                firstInp.value=secondInp.value* data.conversion_rate;
-                  if (firstInp.value.includes('.')) {
-                let item = firstInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                firstInp.value = item.join('.');
-            }
-            }    
-            footerTextOne.textContent="1 "+first+" = "+data.conversion_rate+" "+ second
-        })
-        fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${second}/${first}`).then(res => res.json())
-        .then(data =>{
-            if(main==1){
-                secondInp.value = firstInp.value * data.conversion_rate;
-                if (secondInp.value.includes('.')) {
-                let item = secondInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                secondInp.value = item.join('.');
-            }
-            }
-            else if(main==2){
-                firstInp.value=secondInp.value* data.conversion_rate;
-                  if (firstInp.value.includes('.')) {
-                let item = firstInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                firstInp.value = item.join('.');
-            }
-            }    
-            footerTextTwo.textContent="1 "+second+" = "+data.conversion_rate+" "+ first
-        })
-})
+        firstSecondFetch();
+        footerText();
+    })
 })
 
+function internetConnection() {
+    if (!navigator.onLine) {
+        internet.classList.remove("dis-none");
+        if(main ==1){
+            secondInp.value="";
+        }
+        else{
+            firstInp.value="";
+        }
+    } else {
+        internet.classList.add("dis-none");
+        firstSecondFetch();
+        footerText();
+    }
+}
+internetConnection();
 
-
-btnTwo.forEach((itemTwo, j) =>{
-    itemTwo.addEventListener('touchstart', () =>{
-        second=itemTwo.textContent
-        choice(btnTwo,itemTwo);
-        fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${first}/${second}`).then(res => res.json())
-        .then(data =>{
-            if(main==1){
-                secondInp.value = firstInp.value * data.conversion_rate;
-                if (secondInp.value.includes('.')) {
-                let item = secondInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                secondInp.value = item.join('.');
-            }
-            }
-            else if(main==2){
-                firstInp.value=secondInp.value* data.conversion_rate;
-                  if (firstInp.value.includes('.')) {
-                let item = firstInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                firstInp.value = item.join('.');
-            }
-            }                   
-            footerTextOne.textContent="1 "+first+" = "+data.conversion_rate+" "+ second
-        })
-        fetch(`https://v6.exchangerate-api.com/v6/702070004d1a5c3b2a65243f/pair/${second}/${first}`).then(res => res.json())
-        .then(data =>{
-            if(main==1){
-                secondInp.value = firstInp.value * data.conversion_rate;
-                if (secondInp.value.includes('.')) {
-                let item = secondInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                secondInp.value = item.join('.');
-            }
-            }
-            else if(main==2){
-                firstInp.value=secondInp.value* data.conversion_rate;
-                  if (firstInp.value.includes('.')) {
-                let item = firstInp.value.split('.');
-                if (item[1].length > 5) {
-                    item[1] = item[1].substring(0, 5);
-                }
-                firstInp.value = item.join('.');
-            }
-            }    
-            footerTextTwo.textContent="1 "+second+" = "+data.conversion_rate+" "+ first
-        })
-})
-})
+window.addEventListener('online', internetConnection);
+window.addEventListener('offline', internetConnection);
