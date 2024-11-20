@@ -135,7 +135,7 @@ btnTwo.forEach((itemTwo, j) =>{
 function internetConnection() {
     if (!navigator.onLine) {
         internet.classList.remove("dis-none");
-        if(main ==1){
+        if(main == 1){
             secondInp.value="";
         }
         else{
