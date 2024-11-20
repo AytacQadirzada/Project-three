@@ -27,7 +27,7 @@ else if(main==2){
         }
     })
 }
-}
+};
 function footerText(){
     fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${first}/${second}`).then(res => res.json()).then(data =>{
         footerTextOne.textContent="1 "+first+" = "+data.conversion_rate+" "+ second
@@ -35,17 +35,17 @@ function footerText(){
     fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${second}/${first}`).then(res => res.json()).then(data =>{
         footerTextTwo.textContent="1 "+second+" = "+data.conversion_rate+" "+ first
     })
-}
+};
 
 firstInp.addEventListener('input', () => {
     main=1;
     firstSecondFetch();
-})
+});
 
 secondInp.addEventListener('input', () => {
     main=2;
     firstSecondFetch();
-})
+});
 
 firstInp.addEventListener('input', () => {
     firstInp.value = firstInp.value.replace(/[^0-9.,]/g, '');
@@ -73,7 +73,7 @@ firstInp.addEventListener('input', () => {
     }
     firstInp.value = firstInp.value.toFixed(5);
     
-})
+});
 
 secondInp.addEventListener('input', () => {
     secondInp.value = secondInp.value.replace(/[^0-9.,]/g, '');
@@ -112,7 +112,7 @@ function choice(elements, selectedElement) {
             element.classList.remove("choice");
         }
     });
-}
+};
 
 btnOne.forEach((itemOne, i) =>{
     itemOne.addEventListener('click', () =>{
@@ -121,7 +121,7 @@ btnOne.forEach((itemOne, i) =>{
         firstSecondFetch();
         footerText();
     })
-})
+});
 
 btnTwo.forEach((itemTwo, j) =>{
     itemTwo.addEventListener('click', () =>{
@@ -130,7 +130,7 @@ btnTwo.forEach((itemTwo, j) =>{
         firstSecondFetch();
         footerText();
     })
-})
+});
 
 function internetConnection() {
     if (!navigator.onLine) {
@@ -146,7 +146,7 @@ function internetConnection() {
         firstSecondFetch();
         footerText();
     }
-}
+};
 internetConnection();
 
 window.addEventListener('online', internetConnection);
