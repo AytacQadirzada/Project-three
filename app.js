@@ -9,6 +9,8 @@ let second = 'USD';
 let btns = document.querySelectorAll('.buttons button');
 let internet = document.querySelector('.internet');
 let main;
+let btnMainOne=document.querySelector('.button-one');
+let btnMainTwo=document.querySelector('.button-two');
 
 function firstSecondFetch(){
     if(main==1){
@@ -79,6 +81,7 @@ firstInp.addEventListener('input', () => {
         }
         firstInp.value=item.join("");
     }
+    
 });
 
 secondInp.addEventListener('input', () => {
@@ -130,27 +133,42 @@ btnOne.forEach((itemOne, i) =>{
         first=itemOne.textContent;
         firstSecondFetch();
         footerText();
+        internetConnection();
     })
 });
 
 btnTwo.forEach((itemTwo, j) =>{
     itemTwo.addEventListener('click', () =>{
-        second=itemTwo.textContent
+        second=itemTwo.textContent;
         choice(btnTwo,itemTwo);                
         firstSecondFetch();
         footerText();
+        internetConnection();
     })
 });
+
 
 function internetConnection() {
     if (!navigator.onLine) {
         internet.classList.remove("dis-none");
-        if(main == 1){
-            secondInp.value="";
-        }
-        else{
-            firstInp.value="";
-        }
+                    let firstOne=btnMainOne.getElementsByClassName('choice')[0];
+                    let secondOne=btnMainTwo.getElementsByClassName('choice')[0];
+                    if(main==1){
+                        if(firstOne.innerHTML==secondOne.innerHTML){
+                                secondInp.value=firstInp.value;
+                    }
+                    else{
+                        secondInp.value='';
+                    }
+                }
+                else if(main==2){
+                    if(firstOne.innerHTML==secondOne.innerHTML){
+                        firstInp.value=secondInp.value;
+            }
+            else{
+                firstInp.value='';
+            }
+                }
     } else {
         internet.classList.add("dis-none");
         firstSecondFetch();
