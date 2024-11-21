@@ -434,5 +434,8 @@ input:focus{
     .internet img{
         width: 4.5vw;
     }
-
+    .menu-three-line{
+        font-size: 8px;
+        margin-top: 3px;
+    }
 }
