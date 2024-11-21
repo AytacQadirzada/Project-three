@@ -14,20 +14,15 @@ function firstSecondFetch(){
     if(main==1){
         fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${first}/${second}`).then(res => res.json()).then(data =>{
             secondInp.value = (Number(firstInp.value) * data.conversion_rate).toFixed(5);
-            if(secondInp.value <=0){
-                secondInp.value="";
-            }
     })
 }
 else if(main==2){
     fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${second}/${first}`).then(res => res.json()).then(data =>{
         firstInp.value = (Number(secondInp.value) * data.conversion_rate).toFixed(5);
-        if(firstInp.value <=0){
-            firstInp.value="";
-        }
     })
 }
 };
+
 function footerText(){
     fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${first}/${second}`).then(res => res.json()).then(data =>{
         footerTextOne.textContent="1 "+first+" = "+data.conversion_rate+" "+ second
@@ -147,6 +142,7 @@ function internetConnection() {
         footerText();
     }
 };
+
 internetConnection();
 
 window.addEventListener('online', internetConnection);
