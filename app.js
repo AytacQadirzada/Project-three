@@ -14,12 +14,18 @@ function firstSecondFetch(){
     if(main==1){
         fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${first}/${second}`).then(res => res.json()).then(data =>{
             secondInp.value = (Number(firstInp.value) * data.conversion_rate).toFixed(5);
+            if(firstInp.value == ""){
+                secondInp.value ="";
+            }
     })
 }
 else if(main==2){
     fetch(`https://v6.exchangerate-api.com/v6/e3406c822cbde34a6789b861/pair/${second}/${first}`).then(res => res.json()).then(data =>{
         firstInp.value = (Number(secondInp.value) * data.conversion_rate).toFixed(5);
     })
+    if(secondInp.value == ""){
+        firstInp.value ="";
+    }
 }
 };
 
@@ -66,6 +72,12 @@ firstInp.addEventListener('input', () => {
         }
         firstInp.value=items.join('.');
     }
+    if(!firstInp.value.includes(".")){
+        if(item[0] == 0){
+            item[0]="";
+        }
+        firstInp.value=item.join("");
+    }
     firstInp.value = firstInp.value.toFixed(5);
     
 });
@@ -93,6 +105,12 @@ secondInp.addEventListener('input', () => {
             items[1]=items[1].substring(0, 5);
         }
         secondInp.value=items.join('.');
+    }
+    if(!secondInp.value.includes(".")){
+        if(item[0] == 0){
+            item[0]="";
+        }
+        secondInp.value=item.join("");
     }
     secondInp.value=secondInp.value.toFixed(5);
     

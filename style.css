@@ -308,10 +308,6 @@ input:focus{
         display: flex;
         justify-content: space-between;
     }
-    .login-and-menu{
-        display: flex;
-        gap: 25px;
-    }
     .menu-container{
         display: none;
     }
@@ -436,6 +432,10 @@ input:focus{
     }
     .menu-three-line{
         font-size: 2vw;
-        margin-top: 3px;
+        margin-top: 10px;
+    }
+    .menu-three-line p{
+        margin-top: 10px;
+        /* text-align: center; */
     }
 }
