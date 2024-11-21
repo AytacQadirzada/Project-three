@@ -147,3 +147,9 @@ internetConnection();
 
 window.addEventListener('online', internetConnection);
 window.addEventListener('offline', internetConnection);
+
+let threeLine=document.querySelector("menu");
+let menuThreeLine=document.querySelector(".menu-three-line");
+threeLine.addEventListener("touchstart", () =>{
+ menuThreeLine.classList.toggle('dis-none') ;  
+})
