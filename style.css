@@ -331,6 +331,7 @@ input:focus{
         background-color: white;
         width: 60px;
         font-size: 13px;
+        height: 34px;
     }
     h1{
         font-size: 5vw;
@@ -433,5 +434,5 @@ input:focus{
     .internet img{
         width: 4.5vw;
     }
-    
+
 }
