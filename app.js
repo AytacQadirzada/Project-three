@@ -75,12 +75,19 @@ firstInp.addEventListener('input', () => {
         }
         firstInp.value=items.join('.');
     }
-    if(!firstInp.value.includes(".")){
-        if(item[0] == 0){
+    // if(!firstInp.value.includes(".")){
+    //     if(item[0] == 0){
+    //         item[0]="";
+    //     }
+    //     firstInp.value=item.join("");
+    // }
+    if(item[0] == 0){
+        if(item[1] == "1" || item[1] == "2" || item[1] == "3" || item[1] == "4" || item[1] == "5" || item[1] == "6" || item[1] == "7" || item[1] == "8" || item[1] == "9"){
             item[0]="";
         }
-        firstInp.value=item.join("");
     }
+    firstInp.value=item.join('');
+
     
 });
 
@@ -108,12 +115,19 @@ secondInp.addEventListener('input', () => {
         }
         secondInp.value=items.join('.');
     }
-    if(!secondInp.value.includes(".")){
-        if(item[0] == 0){
+    // if(!secondInp.value.includes(".")){
+    //     if(item[0] == 0){
+    //         item[0]="";
+    //     }
+    //     secondInp.value=item.join("");
+    // } 
+    
+    if(item[0] == 0){
+        if(item[1] == "1" || item[1] == "2" || item[1] == "3" || item[1] == "4" || item[1] == "5" || item[1] == "6" || item[1] == "7" || item[1] == "8" || item[1] == "9"){
             item[0]="";
         }
-        secondInp.value=item.join("");
-    }    
+    }
+    secondInp.value=item.join('');
     
 });
 
