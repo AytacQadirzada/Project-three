@@ -161,15 +161,23 @@ btnTwo.forEach((itemTwo, j) =>{
     })
 });
 
+let threeLine=document.querySelector(".menu");
+let menuThreeLine=document.querySelector(".menu-three-line");
+threeLine.addEventListener("touchstart", () =>{
+ menuThreeLine.classList.toggle('dis-none') ;  
+})
 
 function internetConnection() {
     if (!navigator.onLine) {
         internet.classList.remove("dis-none");
                     let firstOne=btnMainOne.getElementsByClassName('choice')[0];
                     let secondOne=btnMainTwo.getElementsByClassName('choice')[0];
+
                     if(main==1){
                         if(firstOne.innerHTML==secondOne.innerHTML){
-                                secondInp.value=firstInp.value;
+                            secondInp.value=firstInp.value;
+                            footerTextOne.textContent ="1 "+firstOne.innerHTML+" = 1 "+secondOne.innerHTML;
+                            footerTextTwo.textContent ="1 "+secondOne.innerHTML+" = 1 " + firstOne.innerHTML;
                     }
                     else{
                         secondInp.value='';
@@ -178,6 +186,8 @@ function internetConnection() {
                 else if(main==2){
                     if(firstOne.innerHTML==secondOne.innerHTML){
                         firstInp.value=secondInp.value;
+                        footerTextOne.textContent ="1 "+firstOne.innerHTML+" = 1 "+secondOne.innerHTML;
+                        footerTextTwo.textContent ="1 "+secondOne.innerHTML+" = 1 " + firstOne.innerHTML;
             }
             else{
                 firstInp.value='';
@@ -194,9 +204,3 @@ internetConnection();
 
 window.addEventListener('online', internetConnection);
 window.addEventListener('offline', internetConnection);
-
-let threeLine=document.querySelector(".menu");
-let menuThreeLine=document.querySelector(".menu-three-line");
-threeLine.addEventListener("touchstart", () =>{
- menuThreeLine.classList.toggle('dis-none') ;  
-})
