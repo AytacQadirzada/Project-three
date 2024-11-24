@@ -310,7 +310,7 @@ display: none;
         padding-bottom: 1vh;
         padding-left: 8.5vw;
         padding-right: 2vw;
-    }
+        }
     .header-container{
         display: flex;
         justify-content: space-between;
@@ -427,15 +427,17 @@ display: none;
     }
     .internet{
         background-color: hsla(0, 85%, 69%, 0.5);
-        width: 40vw;
-        padding: 10px 0 10px 4vw;
-        font-size: 3.5vw;
+        width: 200px;
+        padding: 10px 0 10px;
+        justify-content: center;
+        font-size: 15px;
         display: flex;
-        margin-top: 25px;
+        margin-top: 15px;
         gap: 10px;
+        align-items: center;
     }
     .internet img{
-        width: 4.5vw;
+        width: 25px;
     }
     .menu-three-line{
         font-size: 2vw;

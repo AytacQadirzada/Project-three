@@ -50,6 +50,7 @@ firstInp.addEventListener('input', () => {
         firstInp.value=items.join('.');
     }
     firstSecondFetch();
+    internetConnection();
 });
 
 secondInp.addEventListener('input', () => {
@@ -62,6 +63,7 @@ secondInp.addEventListener('input', () => {
         secondInp.value=items.join('.');
     }
     firstSecondFetch();
+    internetConnection();
 });
 
 firstInp.addEventListener('input', () => {
@@ -106,6 +108,7 @@ firstInp.addEventListener('input', () => {
     }
     }
     firstInp.value=item.join('');
+    internetConnection();
 
     
 });
@@ -153,6 +156,7 @@ secondInp.addEventListener('input', () => {
     }
     }
     secondInp.value=item.join('');
+    internetConnection();
     
 });
 
