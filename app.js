@@ -42,11 +42,25 @@ function footerText(){
 
 firstInp.addEventListener('input', () => {
     main=1;
+    if(firstInp.value.includes(".")){
+        let items=firstInp.value.split(".");
+        if(items[1].length>5){
+            items[1]=items[1].substring(0, 5);
+        }
+        firstInp.value=items.join('.');
+    }
     firstSecondFetch();
 });
 
 secondInp.addEventListener('input', () => {
     main=2;
+    if(secondInp.value.includes(".")){
+        let items=secondInp.value.split(".");
+        if(items[1].length>5){
+            items[1]=items[1].substring(0, 5);
+        }
+        secondInp.value=items.join('.');
+    }
     firstSecondFetch();
 });
 
@@ -75,16 +89,21 @@ firstInp.addEventListener('input', () => {
         }
         firstInp.value=items.join('.');
     }
-    // if(!firstInp.value.includes(".")){
-    //     if(item[0] == 0){
-    //         item[0]="";
-    //     }
-    //     firstInp.value=item.join("");
-    // }
     if(item[0] == 0){
-        if(item[1] == "1" || item[1] == "2" || item[1] == "3" || item[1] == "4" || item[1] == "5" || item[1] == "6" || item[1] == "7" || item[1] == "8" || item[1] == "9"){
-            item[0]="";
+        for(let i=1;i<=item.length;i++){
+            if(item[1] != "."){
+        if(item[i] == "1" || item[i] == "2" || item[i] == "3" || item[i] == "4" || item[i] == "5" || item[i] == "6" || item[i] == "7" || item[i] == "8" || item[i] == "9"){
+            for(let j=0;j<i;j++){
+                item[j]="";
+            }
         }
+    }
+        if(item[i] == "."){
+            for(let j=1;j<i;j++){
+                item[j-1]="";
+            }
+        }
+    }
     }
     firstInp.value=item.join('');
 
@@ -108,6 +127,7 @@ secondInp.addEventListener('input', () => {
         }
     }
     secondInp.value=item.join('');
+    
     if(secondInp.value.includes(".")){
         let items=secondInp.value.split(".");
         if(items[1].length>5){
@@ -115,17 +135,22 @@ secondInp.addEventListener('input', () => {
         }
         secondInp.value=items.join('.');
     }
-    // if(!secondInp.value.includes(".")){
-    //     if(item[0] == 0){
-    //         item[0]="";
-    //     }
-    //     secondInp.value=item.join("");
-    // } 
-    
+
     if(item[0] == 0){
-        if(item[1] == "1" || item[1] == "2" || item[1] == "3" || item[1] == "4" || item[1] == "5" || item[1] == "6" || item[1] == "7" || item[1] == "8" || item[1] == "9"){
-            item[0]="";
+        for(let i=1;i<=item.length;i++){
+            if(item[1] != "."){
+        if(item[i] == "1" || item[i] == "2" || item[i] == "3" || item[i] == "4" || item[i] == "5" || item[i] == "6" || item[i] == "7" || item[i] == "8" || item[i] == "9"){
+            for(let j=0;j<i;j++){
+                item[j]="";
+            }
         }
+    }
+        if(item[i] == "."){
+            for(let j=1;j<i;j++){
+                item[j-1]="";
+            }
+        }
+    }
     }
     secondInp.value=item.join('');
     
